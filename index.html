@@ -1,47 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page Template</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        body { background-color: #0a0a0a; color: white; font-family: 'Inter', sans-serif; }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-        .glass-card:hover { border: 1px solid #3b82f6; transform: translateY(-5px); }
+        .glass-bg { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+        body { background: #0a0a0a; color: white; }
     </style>
 </head>
-<body class="p-8">
+<body class="p-10" x-data="{ tab: 'wellesley' }">
 
-    <!-- Header -->
-    <header class="flex justify-between items-center mb-12">
-        <h1 class="text-3xl font-bold tracking-tighter italic">WELLSLEY</h1>
-        <nav class="space-x-6">
-            <a href="#" class="hover:text-blue-500">HOME</a>
-            <a href="#" class="hover:text-blue-500">SERVICES</a>
-            <a href="#" class="hover:text-blue-500">CONTACT</a>
-        </nav>
-    </header>
+    <div class="flex justify-center gap-4 mb-8">
+        <button @click="tab = 'wellesley'" :class="tab === 'wellesley' ? 'bg-blue-600' : 'bg-gray-800'" class="px-6 py-2 rounded-lg">Wellesley</button>
+        <button @click="tab = 'kodomo'" :class="tab === 'kodomo' ? 'bg-blue-600' : 'bg-gray-800'" class="px-6 py-2 rounded-lg">Kodomo</button>
+    </div>
 
-    <!-- Main Grid -->
-    <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <div class="glass-card p-6 rounded-2xl">
-            <h2 class="text-xl font-semibold mb-2">Service Name</h2>
-            <p class="text-gray-400 text-sm">รายละเอียดบริการของคุณที่นี่ เน้นความเรียบง่ายและดูทันสมัย</p>
-        </div>
+    <div class="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
         
-        <!-- Card 2 -->
-        <div class="glass-card p-6 rounded-2xl">
-            <h2 class="text-xl font-semibold mb-2">Service Name</h2>
-            <p class="text-gray-400 text-sm">รายละเอียดบริการของคุณที่นี่ เน้นความเรียบง่ายและดูทันสมัย</p>
-        </div>
-    </main>
+        <template x-if="tab === 'wellesley'">
+            <div class="col-span-3 grid grid-cols-3 gap-4">
+                <div class="glass-bg p-4 rounded-xl border border-white/10">Joseph Wellesley</div>
+                <div class="glass-bg p-4 rounded-xl border border-white/10">Moomin Wellesley</div>
+                <div class="glass-bg p-4 rounded-xl border border-white/10">Best Wellesley</div>
+            </div>
+        </template>
+
+        <template x-if="tab === 'kodomo'">
+            <div class="col-span-3 grid grid-cols-3 gap-4">
+                <div class="glass-bg p-4 rounded-xl border border-white/10">Gus Kodomo</div>
+                <div class="glass-bg p-4 rounded-xl border border-white/10">SayHan Kodomo</div>
+                <div class="glass-bg p-4 rounded-xl border border-white/10">Fong Kodomo</div>
+            </div>
+        </template>
+
+    </div>
 
 </body>
 </html>
